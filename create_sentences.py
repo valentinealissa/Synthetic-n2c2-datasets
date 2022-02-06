@@ -1,5 +1,5 @@
-from create_vocab import get_fh
 import matplotlib.pyplot as plt
+
 
 def create_s_dictionary(file_input):
     """
@@ -32,13 +32,13 @@ def create_s_dictionary(file_input):
 
 
 file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
-train_file = get_fh(file_name, "r")
+train_file = open(file_name)
 directory = create_s_dictionary(train_file)
 # train_file.close()
 
-lengths = []
-for value in directory.values():
-    for s in value:
-        lengths.append(len(s))
-
-plt.hist(lengths)
+# lengths = []
+# for value in directory.values():
+#     for s in value:
+#         lengths.append(len(s))
+#
+# plt.hist(lengths)

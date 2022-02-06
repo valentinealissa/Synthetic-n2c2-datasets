@@ -5,7 +5,7 @@ import numpy
 
 def create_weights(vocab, dictionary):
     note_count = len(dictionary.keys())
-    new_vocab_list = {}
+    weights = {}
 
     for key in dictionary:
         sentences = dictionary[key]
@@ -14,7 +14,6 @@ def create_weights(vocab, dictionary):
             values = sentence.rsplit(" ")
             words += values
         dictionary[key] = words
-        #print(dictionary[key])
 
     for word in vocab:
         word_count = 0
@@ -25,9 +24,9 @@ def create_weights(vocab, dictionary):
                 word_count += 1
 
         weight = numpy.log(note_count / word_count)
-        new_vocab_list[word] = weight
+        weights[word] = weight
 
-    return new_vocab_list
+    return weights
 
 
 file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
