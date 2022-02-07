@@ -2,6 +2,10 @@ import argparse
 import nltk
 from create_vocab import get_fh, create_vocab_set
 from create_sentences import create_s_dictionary
+from create_weights import create_weights
+from replace_words import replace_words
+import random
+import numpy
 
 
 def main():
@@ -35,6 +39,8 @@ def main():
     train_file = get_fh(file_name, "r")
     vocab = create_vocab_set(train_file)
     sentences = create_s_dictionary(train_file)
+    weights = create_weights(vocab, sentences)
+    new_note, metadata = replace_words(sample_note, args.w_replace, list(vocab), weights)
 
     train_file.close()
 

@@ -4,11 +4,10 @@ from create_weights import create_weights
 import random
 import numpy
 
-seed1 = numpy.random.RandomState(40)
-seed2 = random.Random(40)
-
 
 def replace_words(note, percentage, vocab, weight):
+    seed1 = numpy.random.RandomState(40)
+    seed2 = random.Random(40)
     metadata = ["Note #, Word #, Sentence #, Old Word, New Word"]
     new_note = []
     sentence_num = 0
@@ -71,4 +70,4 @@ with open(file_name) as file:
 note, metadata = replace_words(sample_note, 50, list(vocab_words), weights)
 
 print(note)
-print(metadata[:20])
+print(metadata)
