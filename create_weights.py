@@ -29,10 +29,10 @@ def create_weights(vocab, dictionary):
     return weights
 
 
-file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
-train_file = open(file_name)
-vocab = create_vocab_set(train_file)
-train_file = open(file_name)
-sentences = create_s_dictionary(train_file)
-vocab_weights = create_weights(vocab, sentences)
-print(vocab_weights)
+# file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
+# train_file = open(file_name)
+# vocab = create_vocab_set(train_file)
+# train_file = open(file_name)
+# sentences = create_s_dictionary(train_file)
+# vocab_weights = create_weights(vocab, sentences)
+# print(vocab_weights)

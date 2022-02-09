@@ -23,6 +23,7 @@ def create_s_dictionary(file_input):
                 challenge = line[1]
             else:
                 sentences.append(line[2])
+        sentence_d[last_id + ',' + challenge] = sentences
 
     empty_keys = [k for k, v in sentence_d.items() if not v]
     for k in empty_keys:
@@ -31,9 +32,9 @@ def create_s_dictionary(file_input):
     return sentence_d
 
 
-file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
-train_file = open(file_name)
-directory = create_s_dictionary(train_file)
+#file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
+#train_file = open(file_name)
+#directory = create_s_dictionary(train_file)
 # train_file.close()
 
 # lengths = []

@@ -8,7 +8,7 @@ import numpy
 def replace_words(note, percentage, vocab, weight):
     seed1 = numpy.random.RandomState(40)
     seed2 = random.Random(40)
-    metadata = ["Note #, Word #, Sentence #, Old Word, New Word"]
+    metadata = [] # "Note #, Word #, Sentence #, Old Word, New Word"
     new_note = []
     sentence_num = 0
 
@@ -54,20 +54,20 @@ def replace_words(note, percentage, vocab, weight):
     return new_note, metadata
 
 
-file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences_copy.txt'
-f = open(file_name)
-vocab_words = create_vocab_set(f)
-f = open(file_name)
-sentences = create_s_dictionary(f)
-weights = create_weights(vocab_words, sentences)
-
-sample_note = []
-with open(file_name) as file:
-    for line in file:
-        line = str(line).rstrip('\n')
-        sample_note.append(line)
-
-note, metadata = replace_words(sample_note, 50, list(vocab_words), weights)
-
-print(note)
-print(metadata)
+# file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences_copy.txt'
+# f = open(file_name)
+# vocab_words = create_vocab_set(f)
+# f = open(file_name)
+# sentences = create_s_dictionary(f)
+# weights = create_weights(vocab_words, sentences)
+#
+# sample_note = []
+# with open(file_name) as file:
+#     for line in file:
+#         line = str(line).rstrip('\n')
+#         sample_note.append(line)
+#
+# note, metadata = replace_words(sample_note, 50, list(vocab_words), weights)
+#
+# print(note)
+# print(metadata)
