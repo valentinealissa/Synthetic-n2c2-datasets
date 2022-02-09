@@ -1,6 +1,6 @@
 import argparse
 import nltk
-from create_vocab import get_fh, create_vocab_set
+from create_vocab import create_vocab_set
 from create_sentences import create_s_dictionary
 from create_weights import create_weights
 from replace_words import replace_words
