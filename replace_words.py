@@ -4,11 +4,12 @@ from create_weights import create_weights
 import random
 import numpy
 
+seed1 = numpy.random.RandomState(40)
+seed2 = random.Random(40)
+
 
 def replace_words(note, percentage, vocab, weight):
-    seed1 = numpy.random.RandomState(40)
-    seed2 = random.Random(40)
-    metadata = [] # "Note #, Word #, Sentence #, Old Word, New Word"
+    metadata = []  # "Note #, Word #, Sentence #, Old Word, New Word"
     new_note = []
     sentence_num = 0
 
@@ -25,24 +26,27 @@ def replace_words(note, percentage, vocab, weight):
         indexed_words = []
         for word in words:
             index = words.index(word)
-            indexed_word = word + "_" + str(index)
+            char_before = words[:index]
+            char_before = sum(len(i) for i in char_before) + len(char_before)
+            indexed_word = word + "_" + str(index) + "_" + str(char_before)
             indexed_words.append(indexed_word)
 
         num_2replace = round((percentage * 0.01) * len(words))
 
         words_2replace = seed1.choice(indexed_words, size=num_2replace, replace=False)
-        #print(words_2replace)
         replacement_words = seed2.choices(vocab, k=num_2replace, weights=ww)
-        #print(replacement_words)
 
         for count, value in enumerate(words_2replace):
             old_word = value.rsplit("_")[0]
             index = int(value.rsplit("_")[1])
+            char_before = value.rsplit("_")[2]
             new_word = replacement_words[count]
-            #print(new_word)
             words[index] = new_word
-            #print(words)
-            word_metadata = [patient_id, index, sentence_num, old_word, new_word]
+            char_after_old = int(char_before) + len(old_word) + 1
+            old_word_char = str(char_before) + ":" + str(char_after_old)
+            char_after_new = int(char_before) + len(new_word) + 1
+            new_word_char = str(char_before) + ":" + str(char_after_new)
+            word_metadata = str(patient_id) + "," + str(index) + "," + str(old_word_char) + "," + str(new_word_char) + "," + str(sentence_num) + "," + str(old_word) + "," + str(new_word)
             metadata.append(word_metadata)
 
         words = " ".join(words)
@@ -52,7 +56,6 @@ def replace_words(note, percentage, vocab, weight):
         sentence_num += 1
 
     return new_note, metadata
-
 
 # file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences_copy.txt'
 # f = open(file_name)

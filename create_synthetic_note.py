@@ -37,12 +37,15 @@ def main():
                         default=50)
     # parsing arguments
     args = parser.parse_args()
+    seed1 = numpy.random.RandomState(40)
+    seed2 = random.Random(40)
     file_name = '/Users/alissavalentine/Charney rotation/project code/input/train_sentences.txt'
     train_file = open(file_name)
     vocab = create_vocab_set(train_file)
     train_file = open(file_name)
     sentences = create_s_dictionary(train_file)
     weights = create_weights(vocab, sentences)
+    train_file = open(file_name)
     new_notes, md_words, md_sentences = repeat_notes(train_file, args.s_add, args.w_replace, vocab, weights, sentences)
 
     outdir = "/Users/alissavalentine/Charney rotation/project code/output"
@@ -58,7 +61,7 @@ def main():
 
     word_md_file = open("word_metadata.txt", "w")
     with word_md_file as file:
-        file.writelines("Note #, Word #, Sentence #, Old Word, New Word\n")
+        file.writelines("note_id,old_word_index,old_word_chr,new_word_chr,sentence_index,old_word,new_word\n")
         for note_changes in md_words:
             for line in note_changes:
                 file.writelines(str(line))
@@ -67,8 +70,8 @@ def main():
 
     sentence_md_file = open("sentence_metadata.txt", "w")
     with sentence_md_file as file:
-        file.writelines("Note #, OG Sentence Count, New Sentence Count, OG Note # of New Sentence, "
-                        "Index of New Sentence in OG Note\n")
+        file.writelines("note_id,old_sent_count,new_sent_count,"
+                        "sent_source_note_id,sent_source_index\n")
         for note_changes in md_sentences:
             for line in note_changes:
                 file.writelines(str(line))
