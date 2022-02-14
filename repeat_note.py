@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from replace_words import replace_words
 from add_sentences import add_sentences
 

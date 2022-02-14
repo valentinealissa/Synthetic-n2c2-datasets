@@ -1,4 +1,5 @@
-from create_vocab import create_vocab_set
+#!/usr/bin/env python
+# from create_vocab import create_vocab_set
 from create_sentences import create_s_dictionary
 from create_weights import create_weights
 import random
@@ -9,7 +10,7 @@ seed2 = random.Random(40)
 
 
 def replace_words(note, percentage, vocab, weight):
-    metadata = []  # "Note #, Word #, Sentence #, Old Word, New Word"
+    metadata = []  # note_id,old_word_index,old_word_chr,new_word_chr,sentence_index,old_word,new_word
     new_note = []
     sentence_num = 0
 

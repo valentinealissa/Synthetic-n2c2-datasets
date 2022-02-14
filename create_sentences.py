@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+#!/usr/bin/env python
 
 
 def create_s_dictionary(file_input):

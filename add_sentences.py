@@ -1,9 +1,10 @@
+#!/usr/bin/env python
 import random
 
 seed2 = random.Random(40)
 
 def add_sentences(note, add_num, s_dictionary):
-    meta_data = [] # "Note #, OG Sentence Count, New Sentence Count, OG Note # of New Sentence, Index of New Sentence in OG Note"
+    meta_data = [] # note_id,old_sent_count,new_sent_count,sent_source_note_id,sent_source_index
     og_sentence_count = len(note)
     new_sentence_count = og_sentence_count
 

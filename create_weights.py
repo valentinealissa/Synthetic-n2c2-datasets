@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from create_vocab import create_vocab_set
 from create_sentences import create_s_dictionary
 import numpy
